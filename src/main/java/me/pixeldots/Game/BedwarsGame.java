@@ -184,13 +184,15 @@ public class BedwarsGame {
         BedwarsRunner.Variables.WorldInfo = new WorldInformation();
         BedwarsRunner.isRunning = true;
 
-        // Eliminate any teams with no players
-        for (int i = 0; i < BedwarsRunner.Variables.Teams.size(); i++) {
-            if (!TeamUtils.teamHasPlayers(i)) {
-                for (int j = 0; j < BedwarsRunner.Variables.getTeamBeds(i).size(); j++) {
-                    TeamUtils.breakTeamBed(i, j);
+        if (BedwarsConf.eliminateEmptyTeams) {
+            // Eliminate any teams with no players
+            for (int i = 0; i < BedwarsRunner.Variables.Teams.size(); i++) {
+                if (!TeamUtils.teamHasPlayers(i)) {
+                    for (int j = 0; j < BedwarsRunner.Variables.getTeamBeds(i).size(); j++) {
+                        TeamUtils.breakTeamBed(i, j);
+                    }
+                    TeamUtils.TeamEliminated(BedwarsRunner.Variables.Teams.get(i), i);
                 }
-                TeamUtils.TeamEliminated(BedwarsRunner.Variables.Teams.get(i), i);
             }
         }
     }
@@ -293,6 +295,10 @@ public class BedwarsGame {
                             item.teleport(location); // teleport item to position
                         }
                     }
+
+                    if (BedwarsConf.debugTeamGenerators) {
+                        BedwarsRunner.logger.info("[DEBUG] Atttempted to spawn items at " + location + " spawned, Iron: " + canSpawn[0] + ", Gold: " + canSpawn[1] + ", Emerald: " + canSpawn[2] + ", forge level: " + forgeLevel);
+                    }
                 }
             }
             LastIronSpawn = currentTime + Utils.toMillisecondTime(BedwarsConf.ironGenTime);//Math.round(1.5f*1000);
@@ -301,10 +307,15 @@ public class BedwarsGame {
             for (int i = 0; i < BedwarsRunner.Variables.DiamondSpawners.size(); i++) {
                 Vector vector = BedwarsRunner.Variables.DiamondSpawners.get(i); // get generator vector
                 Location location = new Location(BedwarsRunner.world, vector.getX(), vector.getY(), vector.getZ()); // create location
-                if (canSpawnDiamondGenItem(location)) {
+                boolean can_spawn = canSpawnDiamondGenItem(location);
+                if (can_spawn) {
                     Item item = BedwarsRunner.world.dropItem(location, new ItemStack(Material.DIAMOND)); // drop a diamond
                     item.setVelocity(new Vector(0,0,0)); // set velocity to 0,0,0
                     item.teleport(location); // teleport item to position
+                }
+
+                if (BedwarsConf.debugDiamondGenerators) {
+                    BedwarsRunner.logger.info("[DEBUG] Attempted to spawn Diamond at " + location + " spawned: " + can_spawn);
                 }
             }
             LastDiamondSpawn = currentTime + (long)Math.ceil(Utils.toMillisecondTime(BedwarsConf.diamondGenTime)/Utils.getDiamondDivider(BedwarsRunner.Variables.WorldInfo.diamondLevel));//(30*1000);
@@ -313,11 +324,16 @@ public class BedwarsGame {
             for (int i = 0; i < BedwarsRunner.Variables.EmeraldSpawners.size(); i++) {
                 Vector vector = BedwarsRunner.Variables.EmeraldSpawners.get(i); // get generator vector
                 Location location = new Location(BedwarsRunner.world, vector.getX(), vector.getY(), vector.getZ()); // create location 
+                boolean can_spawn = canSpawnEmeraldGenItem(location);
                 
-                if (canSpawnEmeraldGenItem(location)) {
+                if (can_spawn) {
                     Item item = BedwarsRunner.world.dropItem(location, new ItemStack(Material.EMERALD)); // drop an emerald
                     item.setVelocity(new Vector(0,0,0)); // set velocity to 0,0,0
                     item.teleport(location); // teleport item to position
+                }
+
+                if (BedwarsConf.debugEmeraldGenerators) {
+                    BedwarsRunner.logger.info("[DEBUG] Attempted to spawn Emerald at " + location + " spawned: " + can_spawn);
                 }
             }
             LastEmeraldSpawn = currentTime + (long)Math.ceil(Utils.toMillisecondTime(BedwarsConf.emeraldGenTime)/Utils.getEmeraldDivider(BedwarsRunner.Variables.WorldInfo.emeraldLevel));//(60*1000);
@@ -466,7 +482,11 @@ public class BedwarsGame {
             if (ironCount >= BedwarsConf.TeamGeneratorMaxIronCount && goldCount >= BedwarsConf.TeamGeneratorMaxGoldCount && emeraldCount >= BedwarsConf.TeamGeneratorMaxEmeraldCount) 
                 return new boolean[] {false, false, false};
         }
-        return new boolean[] {!(ironCount >= BedwarsConf.TeamGeneratorMaxIronCount), !(goldCount >= BedwarsConf.TeamGeneratorMaxGoldCount), !(emeraldCount >= BedwarsConf.TeamGeneratorMaxEmeraldCount)};
+        return new boolean[] {
+            ironCount < BedwarsConf.TeamGeneratorMaxIronCount,
+            goldCount < BedwarsConf.TeamGeneratorMaxGoldCount,
+            emeraldCount < BedwarsConf.TeamGeneratorMaxEmeraldCount
+        };
     }
 
     public static boolean canSpawnEmeraldGenItem(Location location) {
@@ -481,7 +501,7 @@ public class BedwarsGame {
             if (emeraldCount >= BedwarsConf.GeneratorMaxEmeraldCount) 
                 return false;
         }
-        return emeraldCount >= BedwarsConf.GeneratorMaxEmeraldCount;
+        return true;
     }
 
     public static boolean canSpawnDiamondGenItem(Location location) {
@@ -496,7 +516,7 @@ public class BedwarsGame {
             if (diamondCount >= BedwarsConf.GeneratorMaxDiamondCount) 
                 return false;
         }
-        return diamondCount >= BedwarsConf.GeneratorMaxDiamondCount;
+        return true;
     }
 
 }

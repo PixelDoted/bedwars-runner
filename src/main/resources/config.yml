@@ -1,6 +1,12 @@
+# Debug Values
+debugTeamGenerators: false
+debugDiamondGenerators: false
+debugEmeraldGenerators: false
+
 # Server Values
 requiredPlayersToStart: 0
 autoStartWithServer: false
+eliminateEmptyTeams: false
 autoStartDelay: 5s
 mapName: "<Map>"
 modeName: "<Mode>"

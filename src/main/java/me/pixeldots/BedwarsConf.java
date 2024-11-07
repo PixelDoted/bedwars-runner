@@ -6,8 +6,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class BedwarsConf {
     
     // config
+    public static boolean debugTeamGenerators = false;
+    public static boolean debugDiamondGenerators = false;
+    public static boolean debugEmeraldGenerators = false;
+    
     public static int requiredPlayersToStart = 0;
     public static boolean autoStartWithServer = false;
+    public static boolean eliminateEmptyTeams = false;
     public static String autoStartDelay = "5s";
     public static String mapName = "<Map Name>";
     public static String modeName = "<Mode Name>";
@@ -49,9 +54,14 @@ public class BedwarsConf {
 
     public static void loadConf(JavaPlugin plugin) {
         config = plugin.getConfig();
+
+        config.addDefault("debugTeamGenerators", debugTeamGenerators);
+        config.addDefault("debugDiamondGenerators", debugDiamondGenerators);
+        config.addDefault("debugEmeraldGenerators", debugEmeraldGenerators);
         
         config.addDefault("requiredPlayersToStart", requiredPlayersToStart);
         config.addDefault("autoStartWithServer", autoStartWithServer);
+        config.addDefault("eliminateEmptyTeams", eliminateEmptyTeams);
         config.addDefault("autoStartDelay", autoStartDelay);
         config.addDefault("mapName", mapName);
         config.addDefault("modeName", modeName);
@@ -81,8 +91,13 @@ public class BedwarsConf {
         config.addDefault("emeraldGeneratorTime", emeraldGenTime);
         plugin.saveConfig();
 
+        debugTeamGenerators = config.getBoolean("debugTeamGenerators");
+        debugDiamondGenerators = config.getBoolean("debugDiamondGenerators");
+        debugEmeraldGenerators = config.getBoolean("debugEmeraldGenerators");
+
         requiredPlayersToStart = config.getInt("requiredPlayersToStart");
         autoStartWithServer = config.getBoolean("autoStartWithServer");
+        eliminateEmptyTeams = config.getBoolean("eliminateEmptyTeams");
         autoStartDelay = config.getString("autoStartDelay");
         mapName = config.getString("mapName");
         modeName = config.getString("modeName");
