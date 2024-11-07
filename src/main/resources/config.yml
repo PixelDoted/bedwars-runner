@@ -1,0 +1,35 @@
+# Server Values
+requiredPlayersToStart: 0
+autoStartWithServer: false
+autoStartDelay: 5s
+mapName: "<Map>"
+modeName: "<Mode>"
+
+# Boolean Values
+useOldToolAttributes: true
+canDestroyWorld: false
+friendlyFire: false
+
+# Number Values
+healPoolDistance: 15
+teamTrapDistance: 10
+respawnTime: 5
+dreamDefenderTargetDistance: 15
+dreamDefenderBaseDamage: 5
+
+# Time Values
+magicMilkDuration: 30s
+dreamDefenderAttackedMultiplyer: 10s
+dreamDefenderDuration: 200s
+bedBugDuration: 15s
+
+# Generator Values
+teamGeneratorItemsHaveVelocity: true
+teamGeneratorMaxIronCount: 64
+teamGeneratorMaxGoldCount: 16
+teamGeneratorMaxEmeraldCount: 2
+generatorMaxDiamondCount: 4
+generatorMaxEmeraldCount: 2
+ironGeneratorTime: 1.5s
+diamondGeneratorTime: 30s
+emeraldGeneratorTime: 60s

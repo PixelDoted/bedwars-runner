@@ -1,0 +1,29 @@
+{
+    "section": {
+        "slot": 0,
+        "name": "Protection %UpgradeLevel%",
+        "upgrade": "protection",
+        "cost": [
+            "2 Diamond",
+            "4 Diamond",
+            "8 Diamond",
+            "16 Diamond"
+        ],
+        "display": {
+            "item": "diamond_chestplate",
+            "count": 1,
+            "enchantments": [
+                {
+                    "enchantment": "protection",
+                    "level": "1"
+                }
+            ]
+        },
+        "description": [
+            "%AboveTier%Protection I, 2 Diamonds",
+            "%AboveTier%Protection II,  Diamonds",
+            "%AboveTier%Protection III, 8 Diamonds",
+            "%AboveTier%Protection IV, 16 Diamonds"
+        ]
+    }
+}

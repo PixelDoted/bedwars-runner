@@ -1,0 +1,461 @@
+{
+    "categories": [
+        {
+            "slot": 0,
+            "item": "nether_star",
+            "name": "Base",
+            "category": "base"
+        },
+        {
+            "slot": 1,
+            "item": "terracotta",
+            "name": "Blocks",
+            "category": "blocks"
+        },
+        {
+            "slot": 2,
+            "item": "golden_sword",
+            "name": "Melee",
+            "category": "melee"
+        },
+        {
+            "slot": 3,
+            "item": "chainmail_boots",
+            "name": "Armor",
+            "category": "armor"
+        },
+        {
+            "slot": 4,
+            "item": "stone_pickaxe",
+            "name": "Tools",
+            "category": "tools"
+        },
+        {
+            "slot": 5,
+            "item": "bow",
+            "name": "Range",
+            "category": "range"
+        },
+        {
+            "slot": 6,
+            "item": "brewing_stand",
+            "name": "Potions",
+            "category": "potions"
+        },
+        {
+            "slot": 7,
+            "item": "tnt",
+            "name": "Utils",
+            "category": "utils"
+        }
+    ],
+    "sections": {
+        "base": [
+            {
+                "slot": 0,
+                "name": "ScArY",
+                "cost": "10 Emerald",
+                "give": {
+                    "item": "pumpkin",
+                    "count": 64,
+                    "enchantments": [
+                        {
+                            "enchantment": "knockback",
+                            "level": "1000"
+                        }
+                    ]
+                },
+                "description": [
+                    "This 'Pumpkin' is filled with",
+                    "the souls of your enemy's"
+                ]
+            }
+        ],
+        "blocks": [
+            {
+                "slot": 0,
+                "name": "Wool",
+                "cost": "4 Iron",
+                "give": {
+                    "item": "%teamcolor%_wool",
+                    "count": 16
+                }
+            },
+            {
+                "slot": 1,
+                "name": "Endstone",
+                "cost": "24 Iron",
+                "give": {
+                    "item": "endstone",
+                    "count": 8
+                }
+            },
+            {
+                "slot": 2,
+                "name": "Oak Planks",
+                "cost": "4 Gold",
+                "give": {
+                    "item": "oak_planks",
+                    "count": 4
+                }
+            },
+            {
+                "slot": 3,
+                "name": "Glass",
+                "cost": "12 Iron",
+                "give": {
+                    "item": "%teamcolor%_stained_glass",
+                    "count": 4
+                }
+            },
+            {
+                "slot": 4,
+                "name": "Ladder",
+                "cost": "4 Iron",
+                "give": {
+                    "item": "ladder",
+                    "count": 4
+                }
+            },
+            {
+                "slot": 5,
+                "name": "Obsidian",
+                "cost": "4 Emerald",
+                "give": {
+                    "item": "obsidian",
+                    "count": 4
+                }
+            }
+        ],
+        "melee": [
+            {
+                "slot": 0,
+                "name": "Stone Sword",
+                "cost": "10 Iron",
+                "give": { "item": "stone_sword" }
+            },
+            {
+                "slot": 1,
+                "name": "Iron Sword",
+                "cost": "7 Gold",
+                "give": { "item": "iron_sword" }
+            },
+            {
+                "slot": 2,
+                "name": "Diamond Sword",
+                "cost": "3 Emerald",
+                "give": { "item": "diamond_sword" }
+            },
+            {
+                "slot": 3,
+                "name": "Stick (Knockback I)",
+                "cost": "5 Gold",
+                "give": { 
+                    "item": "stick",
+                    "enchantments": [
+                        {
+                            "enchantment": "knockback",
+                            "level": 1
+                        }
+                    ]
+                }
+            }
+        ],
+        "armor": [
+            {
+                "slot": 0,
+                "name": "Chainmail Armor",
+                "cost": "10 Iron",
+                "give": {
+                    "armor": true,
+                    "item": "chainmail"
+                }
+            },
+            {
+                "slot": 1,
+                "name": "Iron Armor",
+                "cost": "12 Gold",
+                "give": {
+                    "armor": true,
+                    "item": "iron"
+                }
+            },
+            {
+                "slot": 2,
+                "name": "Diamond Armor",
+                "cost": "6 Emerald",
+                "give": {
+                    "armor": true,
+                    "item": "diamond"
+                }
+            }
+        ],
+        "tools": [
+            {
+                "slot": 0,
+                "name": "%ItemName% (%Tier%-1)",
+                "tiers": [
+                    {
+                        "cost": "10 Iron",
+                        "give": {
+                            "item": "Wooden_Pickaxe"
+                        }
+                    },
+                    {
+                        "cost": "10 Iron",
+                        "give": {
+                            "item": "Iron_Pickaxe"
+                        },
+                        "replace": "Wooden_Pickaxe"
+                    },
+                    {
+                        "cost": "3 Gold",
+                        "give": {
+                            "item": "Golden_Pickaxe"
+                        },
+                        "replace": "Iron_Pickaxe"
+                    },
+                    {
+                        "cost": "6 Gold",
+                        "give": {
+                            "item": "Diamond_Pickaxe"
+                        },
+                        "replace": "Golden_Pickaxe"
+                    }
+                ],
+                "description": [
+                    "Tier: %Tier%",
+                    "",
+                    "This is an upgradable item.",
+                    "It will lose 1 tier upon",
+                    "death!",
+                    "",
+                    "You will permanently",
+                    "respawn with at least the",
+                    "lowest tier."
+                ]
+            },
+            {
+                "slot": 1,
+                "name": "%ItemName% (%Tier%-1)",
+                "tiers": [
+                    {
+                        "cost": "10 Iron",
+                        "give": {
+                            "item": "Wooden_Axe"
+                        }
+                    },
+                    {
+                        "cost": "10 Iron",
+                        "give": {
+                            "item": "Iron_Axe"
+                        },
+                        "replace": "Wooden_Axe"
+                    },
+                    {
+                        "cost": "3 Gold",
+                        "give": {
+                            "item": "Golden_Axe"
+                        },
+                        "replace": "Iron_Axe"
+                    },
+                    {
+                        "cost": "6 Gold",
+                        "give": {
+                            "item": "Diamond_Axe"
+                        },
+                        "replace": "Golden_Axe"
+                    }
+                ],
+                "description": [
+                    "Tier: %Tier%",
+                    "",
+                    "This is an upgradable item.",
+                    "It will lose 1 tier upon",
+                    "death!",
+                    "",
+                    "You will permanently",
+                    "respawn with at least the",
+                    "lowest tier."
+                ]
+            },
+            {
+                "slot": 2,
+                "name": "Permanent Shears",
+                "cost": "20 Iron",
+                "give": {
+                    "item": "shears",
+                    "count": 1
+                }
+            }
+        ],
+        "range": [
+            {
+                "slot": 0,
+                "name": "Arrow",
+                "cost": "2 Gold",
+                "give": {
+                    "item": "arrow",
+                    "count": 8
+                }
+            },
+            {
+                "slot": 1,
+                "name": "Bow",
+                "cost": "12 Gold",
+                "give": {
+                    "item": "bow"
+                }
+            },
+            {
+                "slot": 2,
+                "name": "Bow (Power I)",
+                "cost": "24 Gold",
+                "give": {
+                    "item": "bow",
+                    "enchantments": [
+                        {
+                            "enchantment": "power",
+                            "level": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "slot": 3,
+                "name": "Bow (Power I, Punch I)",
+                "cost": "6 Emerald",
+                "give": {
+                    "item": "bow",
+                    "enchantments": [
+                        {
+                            "enchantment": "power",
+                            "level": 1
+                        },
+                        {
+                            "enchantment": "punch",
+                            "level": 1
+                        }
+                    ]
+                }
+            }
+        ],
+        "potions": [
+            {
+                "slot": 0,
+                "name": "Speed Potion",
+                "cost": "1 Emerald",
+                "give": {
+                    "item": "potion",
+                    "potioncolor": "124,175,198",
+                    "effects": [
+                        {
+                            "effect": "speed",
+                            "level": "1",
+                            "duration": "45s"
+                        }
+                    ]
+                }
+            },
+            {
+                "slot": 0,
+                "name": "Jump Boost Potion",
+                "cost": "1 Emerald",
+                "give": {
+                    "item": "potion",
+                    "potioncolor": "35,252,77",
+                    "effects": [
+                        {
+                            "effect": "jumpboost",
+                            "level": "4",
+                            "duration": "45s"
+                        }
+                    ]
+                }
+            },
+            {
+                "slot": 0,
+                "name": "Invisibillity Potion",
+                "cost": "2 Emerald",
+                "give": {
+                    "item": "potion",
+                    "potioncolor": "127,131,146",
+                    "effects": [
+                        {
+                            "effect": "invisibillity",
+                            "level": "0",
+                            "duration": "30s"
+                        }
+                    ]
+                }
+            }
+        ],
+        "utils": [
+            {
+                "slot": 0,
+                "name": "Fireball",
+                "cost": "40 Iron",
+                "give": { "item": "fire_charge", "name": "Fireball" }
+            },
+            {
+                "slot": 1,
+                "name": "TNT",
+                "cost": "8 Gold",
+                "give": { "item": "tnt" }
+            },
+            {
+                "slot": 2,
+                "name": "Ender Pearl",
+                "cost": "4 Emerald",
+                "give": { "item": "ender_pearl" }
+            },
+            {
+                "slot": 3,
+                "name": "Golden Apple",
+                "cost": "3 Gold",
+                "give": { "item": "golden_apple" }
+            },
+            {
+                "slot": 4,
+                "name": "Bridge Egg",
+                "cost": "1 Emerald",
+                "give": { "item": "egg", "name": "Bridge Egg" }
+            },
+            {
+                "slot": 5,
+                "name": "Compact Pop-Up Tower",
+                "cost": "24 Iron",
+                "give": { "item": "chest", "name": "Compact Pop-Up Tower" }
+            },
+            {
+                "slot": 6,
+                "name": "Dream Defender",
+                "cost": "120 Iron",
+                "give": { "item": "skeleton_spawn_egg", "name": "Dream Defender" }
+            },
+            {
+                "slot": 7,
+                "name": "Water Bucket",
+                "cost": "2 Emerald",
+                "give": { "item": "water_bucket" }
+            },
+            {
+                "slot": 8,
+                "name": "Bed Bug",
+                "cost": "20 Iron",
+                "give": { "item": "snowball", "name": "Bed Bug" }
+            },
+            {
+                "slot": 9,
+                "name": "Magic Milk",
+                "cost": "4 Gold",
+                "give": { "item": "milk_bucket", "name": "Magic Milk" },
+                "description": [
+                    "",
+                    "Avoid triggering traps for 30",
+                    "seconds after consuming."
+                ]
+            }
+        ]
+    }
+}

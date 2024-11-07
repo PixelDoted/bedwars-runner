@@ -1,0 +1,26 @@
+# - not finished
+# -/ not finished (less important)
+# + finished
+
++ Allow Multiple beds per team
++ Allow Multiple generators per team
++ Allow Multiple spawns per team
+
++ Fix Filcker on Scoreboard when a Bed is destroyed or Player Dies without bed
+-/ Replace Shop and Upgrade Villagers with NPCs (Citizens)
+
+- default quickbuy
+- Update Upgrade Inventory
++ remove the ability to quickbuy an empty slot (breaking the ItemShop for that player)
++ switch Old Shop to the New Item Shop
+
++ Limit Team Generator (64 IRON 16 GOLD)
++ Limit Emerald Generator, Diamond Generator, and Team Emerald Generator
+- set NameTag for Players
+
++ Team Chat
++ Spectator Chat
++ Global Chat
+
++ add Compass Functionallity
++ team API stuff (set player team, get player team, etc)

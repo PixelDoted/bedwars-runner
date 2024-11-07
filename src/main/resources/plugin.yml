@@ -1,0 +1,34 @@
+name: Bedwars-Runner
+depend: [ProtocolLib]
+main: me.pixeldots.BedwarsRunner
+version: 1.0
+api-version: 1.18
+commands:
+    bedwarsteams:
+        description: team commands (/bedwarsteams help)
+        usage: /<command> <option> <teamcolor>
+        permission: bedwarsrunner.cmds.bedwarsteams
+    bedwarsgenerators:
+        description: generator commands (/bedwarsgenerators help)
+        usage: /<command> <generatortype>
+        permission: bedwarsrunner.cmds.bedwarsgenerators
+    bedwarsgame:
+        description: game commands (/bedwarsgame help)
+        usage: /<command> <option>
+        permission: bedwarsrunner.cmds.bedwarsgame
+    bedwarstools:
+        description: useful tools intended for testing
+        usage: /<command> <option>
+        permission: bedwarsrunner.cmds.bedwarstools
+    bedwarsgui:
+        description: opens guis
+        usage: /<command> <option>
+        permission: bedwarsrunner.cmds.bedwarsgui
+    bedwarsupgrade:
+        description: team upgrades
+        usage: /<command> <option>
+        permission: bedwarsrunner.cmds.bedwarsupgrade
+    bedwarsspawn:
+        description: spawn bedwars entitys
+        usage: /<command> <option>
+        permission: bedwarsrunner.cmds.bedwarsspawn
