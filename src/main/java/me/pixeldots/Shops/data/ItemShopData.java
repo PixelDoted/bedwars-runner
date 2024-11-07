@@ -36,8 +36,8 @@ public class ItemShopData {
         public String category;
 
         public int selectedBarHeight = 1;
-        public boolean hasIcon;
-        public boolean isQuickBuy;
+        public boolean hasIcon = true;
+        public boolean isQuickBuy = false;
     }
 
     public static class ShopItemData {
