@@ -79,8 +79,11 @@ public class UpgradeShopInventory extends BaseShopInventory {
 
     public void setSlotItem(Inventory inventory, Player player, String teamColor, UpgradeItemData item, int slot) {
         int upgradeLevel = TeamUtils.getTeamUpgradeLevel(item.upgrade, player);
-        
-        String[] cost = item.cost.get(upgradeLevel).split(" ");
+        boolean isMaxLevel = upgradeLevel >= item.cost.size();
+
+        String[] cost = new String[0];
+        if (!isMaxLevel) cost = item.cost.get(upgradeLevel).split(" ");
+
         int costAmount = cost.length >= 1 ? Integer.parseInt(cost[0]) : 1;
         CurrencyType costType = cost.length >= 2 ? CurrencyType.valueOf(cost[1].toUpperCase()) : CurrencyType.DIAMOND;
 
@@ -97,12 +100,13 @@ public class UpgradeShopInventory extends BaseShopInventory {
         setItem(inventory, slot, displayStack, (plr, inv) -> {
             PurchaseUpgradeEvent e = APIEventCaller.playerPurchaseUpgrade(player, item.upgrade, costAmount, costType);
             if (e.isCancelled()) return;
-            if (isUpgradeBuyable(plr, costType, count) && TeamUtils.canUpgradeTeam(item.upgrade, plr)) {
+
+            if (TeamUtils.canUpgradeTeam(item.upgrade, plr) && isUpgradeBuyable(plr, costType, costAmount)) {
                 int level = TeamUtils.modifyTeamUpgradeLevel(item.upgrade, plr);
                 sendUpgradeMessage(plr, item.upgrade+(level == 0 ? "" : " "+Utils.toRomanNumerics(level)));
             }
             getInventory(player, inventory);
-        }, (upgradeLevel < item.cost.size() ? item.cost.get(upgradeLevel) : "PURCHASED"), itemDesc);
+        }, (!isMaxLevel ? item.cost.get(upgradeLevel) : "PURCHASED"), itemDesc);
     }
 
     public boolean isUpgradeBuyable(Player player, CurrencyType type, int amount) {

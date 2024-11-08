@@ -38,9 +38,9 @@ public class TeamUtils {
     public static int[] HastePrices = new int[] {2, 4, 0};
 
     public static void upgradeProtection(Player player) {
-        upgradeProtection(BedwarsRunner.Variables.PlayerStats.get(player.getUniqueId()).team, player);
+        upgradeProtection(BedwarsRunner.Variables.PlayerStats.get(player.getUniqueId()).team);
     }
-    public static void upgradeProtection(int teamID, Player player) {
+    public static void upgradeProtection(int teamID) {
         getTeamUpgrades(teamID).ProtectionLevel++;
         String Team = BedwarsRunner.Variables.Teams.get(teamID);
         List<Player> players = BedwarsRunner.world.getPlayers();
@@ -56,9 +56,9 @@ public class TeamUtils {
     }
 
     public static void upgradeSharpness(Player player) {
-        upgradeSharpness(BedwarsRunner.Variables.PlayerStats.get(player.getUniqueId()).team, player);
+        upgradeSharpness(BedwarsRunner.Variables.PlayerStats.get(player.getUniqueId()).team);
     }
-    public static void upgradeSharpness(int teamID, Player player) {
+    public static void upgradeSharpness(int teamID) {
         getTeamUpgrades(teamID).SharpnessLevel++;
         String Team = BedwarsRunner.Variables.Teams.get(teamID);
         List<Player> players = BedwarsRunner.world.getPlayers();
@@ -226,12 +226,15 @@ public class TeamUtils {
         return false;
     }
     public static int modifyTeamUpgradeLevel(String upgrade, Player player) {
-        TeamUpgrades upgrades = getTeamUpgrades(player);
+        int teamID = BedwarsRunner.Variables.PlayerStats.get(player.getUniqueId()).team;
+        TeamUpgrades upgrades = getTeamUpgrades(teamID);
         switch (upgrade.toLowerCase()) {
             case "protection":
-                return upgrades.ProtectionLevel++;
+                upgradeProtection(teamID);
+                return upgrades.ProtectionLevel;
             case "sharpness":
-                return upgrades.SharpnessLevel++;
+                upgradeSharpness(teamID);
+                return upgrades.SharpnessLevel;
             case "forge":
                 return upgrades.ForgeLevel++;
             case "haste":

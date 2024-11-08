@@ -33,12 +33,12 @@ public class BedwarsUpgradeCommand implements CommandExecutor, TabCompleter {
                 } else sender.sendMessage(Utils.text("Failed to upgrade Iron Forge for ").append(Utils.text(TextUtils.upperCaseFirst(teamName), Utils.getTextColor(teamName))));
             } else if (upgradeType.equalsIgnoreCase("sharpness")) {
                 if (TeamUtils.getTeamUpgrades(team).SharpnessLevel == 0) {
-                    TeamUtils.upgradeSharpness(team, (Player)sender);
+                    TeamUtils.upgradeSharpness(team);
                     sender.sendMessage(Utils.text("Successfully upgraded Sharpness for ").append(Utils.text(TextUtils.upperCaseFirst(teamName), Utils.getTextColor(teamName))));
                 } else sender.sendMessage(Utils.text("Failed to upgrade Sharpness for ").append(Utils.text(TextUtils.upperCaseFirst(teamName), Utils.getTextColor(teamName))));
             } else if (upgradeType.equalsIgnoreCase("protection")) {
                 if (TeamUtils.getTeamUpgrades(team).ProtectionLevel < 4) {
-                    TeamUtils.upgradeProtection(team, (Player)sender);
+                    TeamUtils.upgradeProtection(team);
                     sender.sendMessage(Utils.text("Successfully upgraded Protection for ").append(Utils.text(TextUtils.upperCaseFirst(teamName), Utils.getTextColor(teamName))));
                 } else sender.sendMessage(Utils.text("Failed to upgrade Protection for ").append(Utils.text(TextUtils.upperCaseFirst(teamName), Utils.getTextColor(teamName))));
             }
