@@ -38,7 +38,7 @@ public class ItemShopInventory extends BaseShopInventory {
         if (!BedwarsRunner.Variables.perPlayerQuickBuy.containsKey(player.getUniqueId()))
             BedwarsRunner.Variables.perPlayerQuickBuy.put(player.getUniqueId(), DataHandler.LoadPlayerQuickBuy(player.getUniqueId()));
         Inventory inv = Bukkit.createInventory(null, count, Utils.text(title));
-        getInventory(player, inv, "base");
+        getInventory(player, inv, "quickbuy");
         player.openInventory(inv);
     }
 

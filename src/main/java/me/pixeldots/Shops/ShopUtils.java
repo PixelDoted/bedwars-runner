@@ -89,12 +89,12 @@ public class ShopUtils {
     }
 
     public static boolean isShopInventory(String title) {
-        return title.equalsIgnoreCase("item shop") || title.equalsIgnoreCase("upgrade") || title.equalsIgnoreCase("team selector") || title.equalsIgnoreCase("compass");
+        return title.equalsIgnoreCase("item shop") || title.equalsIgnoreCase("upgrade shop") || title.equalsIgnoreCase("team selector") || title.equalsIgnoreCase("compass");
     }
 
     public static void handleShop(Inventory inv, Player player, int slot, String title, boolean isShiftClick) {
         if (title.startsWith("item")) InventoryHandler.handleItemShop(player, inv, slot, isShiftClick);
-        else if (title.startsWith("upgrade")) InventoryHandler.handleUpgrade(player, inv, slot, isShiftClick);
+        else if (title.startsWith("upgrade")) InventoryHandler.handleUpgradeShop(player, inv, slot, isShiftClick);
         else if (title.startsWith("team selector")) InventoryHandler.handleTeamSelector(player, inv, slot, isShiftClick);
         else if (title.startsWith("compass")) InventoryHandler.handleCompass(player, inv, slot, isShiftClick);
     }
