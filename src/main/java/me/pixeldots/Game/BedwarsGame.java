@@ -461,6 +461,9 @@ public class BedwarsGame {
             ScoreboardUtils.UpdateTeamsboard(); // udate teams on the scoreboard
         });
         APIEventCaller.bedDestroyed(TeamID, BedID, new Location(BedwarsRunner.world, bed.pos.getBlockX(), bed.pos.getBlockY(), bed.pos.getBlockZ())); // API Call
+
+        if (!TeamUtils.isTeamAlive(TeamID)) // check if there team is alive
+            TeamUtils.TeamEliminated(BedwarsRunner.Variables.Teams.get(TeamID), TeamID); // eliminate the team
     }
 
     // Generator Checks
