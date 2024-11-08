@@ -112,6 +112,8 @@ public class PlayerEventListener implements Listener {
             e.deathMessage(Utils.text(Utils.getChatColor(color) + player.getName() + ChatColor.WHITE + " has died"));
             BedwarsGame.playerDied(player);
         }
+
+        e.setCancelled(true);
     }
 
     @EventHandler
@@ -147,7 +149,8 @@ public class PlayerEventListener implements Listener {
             else e.setCancelled(true);
         }
 
-        if (e.getItemDrop().getItemStack().getType().name().toLowerCase().endsWith("_sword")) {
+        String lowercase_name = e.getItemDrop().getItemStack().getType().name().toLowerCase();
+        if (lowercase_name.endsWith("_sword")) {
             if (!ShopUtils.playerHasItem(e.getPlayer(), "SWORD")) {
                 if (e.getItemDrop().getItemStack().getType() == Material.WOODEN_SWORD) { e.setCancelled(true); return; }
                 ItemStack stack = new ItemStack(Material.WOODEN_SWORD);
@@ -155,6 +158,12 @@ public class PlayerEventListener implements Listener {
                 meta.setUnbreakable(true); stack.setItemMeta(meta);
                 e.getPlayer().getInventory().addItem(stack); 
             }
+        } else if (lowercase_name.endsWith("_helmet")
+            || lowercase_name.endsWith("_chestplate")
+            || lowercase_name.endsWith("_leggings")
+            || lowercase_name.endsWith("_boots")
+            || lowercase_name.endsWith("compass")) {
+            e.setCancelled(true);
         }
     }
     

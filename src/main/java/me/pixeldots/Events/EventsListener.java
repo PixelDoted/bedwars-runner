@@ -34,6 +34,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.InventoryView;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
@@ -331,6 +332,8 @@ public class EventsListener implements Listener {
         if (ShopUtils.isShopInventory(viewTitle)) {
             if (e.getClickedInventory() == view.getTopInventory())
                 ShopUtils.handleShop(view.getTopInventory(), player, e.getSlot(), viewTitle, e.isShiftClick());
+            e.setCancelled(true);
+        } else if (e.getSlotType() == InventoryType.SlotType.ARMOR) {
             e.setCancelled(true);
         }
     }
